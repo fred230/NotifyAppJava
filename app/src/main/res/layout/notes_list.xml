@@ -33,11 +33,37 @@
 
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:id="@+id/imageview_pin"
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_pin" />
 
 
         </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:text="notes"
+            android:textSize="15sp"
+            android:maxLines="10"
+            android:textStyle="normal"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:id="@+id/textview_notes"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="date"
+            android:textSize="15sp"
+            android:textColor="@color/grey"
+            android:maxLines="10"
+            android:textStyle="normal"
+            android:padding="8dp"
+           android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:id="@+id/textview_date"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>

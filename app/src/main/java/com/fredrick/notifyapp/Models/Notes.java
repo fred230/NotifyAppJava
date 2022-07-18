@@ -66,5 +66,7 @@ public class Notes implements Serializable {
     }
 
 
-
+    public boolean is_pinned() {
+        return getPinned();
+    }
 }
