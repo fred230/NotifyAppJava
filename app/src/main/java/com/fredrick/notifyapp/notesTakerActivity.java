@@ -30,6 +30,16 @@ public class notesTakerActivity extends AppCompatActivity {
         editText_notes = findViewById(R.id.editText_notes);
         editText_title = findViewById(R.id.editText_title);
 
+        //editing of notes
+        notes =new Notes();
+        try{
+        notes = (Notes) getIntent().getSerializableExtra("old_note");
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
         imageview_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +63,7 @@ public class notesTakerActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("note",notes);
                 setResult(Activity.RESULT_OK, intent);
+                finish();
 
 
             }

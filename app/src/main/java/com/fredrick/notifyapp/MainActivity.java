@@ -1,11 +1,13 @@
 package com.fredrick.notifyapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +53,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 101){
+            if(resultCode == Activity.RESULT_OK){
+                assert data != null;
+                Notes new_notes = (Notes) data.getSerializableExtra("note");
+                database.mainDAO().insert(new_notes);
+                notes.clear();
+                notes.addAll(database.mainDAO().getAll());
+                notesListAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
     private void updateRecycler(List<Notes> notes) {
 
         recyclerView.setHasFixedSize(true);
@@ -63,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
     private final NotesClickListerner notesClickListerner = new NotesClickListerner() {
         @Override
         public void onClick(Notes notes) {
+            Intent intent = new Intent(MainActivity.this, notesTakerActivity.class);
+            intent.putExtra("old_note",notes);
+            startActivityForResult(intent,102);
 
         }
 

@@ -52,11 +52,13 @@ public class NotesListAdapter extends  RecyclerView.Adapter<NotesViewHolder> {
         holder.textview_date.setText(list.get(position).getDate());
         holder.textview_date.setSelected(true);
 
-        if(list.get(position).is_pinned()){
+        if(list.get(position).isPinned()){
             holder.imageview_pin.setImageResource(R.drawable.ic_pin);
         }else {
             holder.imageview_pin.setImageResource(0);
         }
+
+
 
         int color_code = getRandomColor();
         holder.notes_container.setCardBackgroundColor(holder.itemView.getResources().getColor(color_code,null));
@@ -87,7 +89,8 @@ public class NotesListAdapter extends  RecyclerView.Adapter<NotesViewHolder> {
 
         Random random = new Random();
 
-        return random.nextInt(colorCodes.size());
+        int random_color =  random.nextInt(colorCodes.size());
+        return colorCodes.get(random_color);
 
 
     }
