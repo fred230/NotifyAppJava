@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @Entity(tableName = "notes")
 public class Notes implements Serializable {
+
     @PrimaryKey(autoGenerate = true)
     int ID = 0;
 
@@ -49,9 +50,7 @@ public class Notes implements Serializable {
         this.notes = notes;
     }
 
-    public Boolean getPinned() {
-        return pinned;
-    }
+
 
     public void setPinned(Boolean pinned) {
         this.pinned = pinned;
@@ -66,7 +65,7 @@ public class Notes implements Serializable {
     }
 
 
-    public boolean is_pinned() {
-        return getPinned();
+    public boolean isPinned() {
+        return pinned;
     }
 }
